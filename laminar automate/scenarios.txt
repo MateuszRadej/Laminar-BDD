@@ -1,0 +1,162 @@
+Scenario: Existing username
+Given user is on last.fm registration website
+When user fills the username box already existing username
+Then User can see Sorry, this username isn't available
+
+Scenario: Username with space
+Given user is on last.fm registration website
+When user fills the username box with space
+Then User can see Your username should be between 2 and 15 characters, begin with a letter and contain only letters, numbers, '_' or '-'.
+
+Scenario: Too short username
+Given user is on last.fm registration website
+When user fills the username box with one character
+Then user can see Your username should be between 2 and 15 characters, begin with a letter and contain only letters, numbers, '_' or '-'.
+
+Scenario: Too long username
+Given user is on last.fm registration website
+When user fills the username box with sixteen character
+Then user can see Your username should be between 2 and 15 characters, begin with a letter and contain only letters, numbers, '_' or '-'.
+
+Scenario: Username with special symbols
+Given user is on last.fm registration website
+When user fills the username box with letters and special symbol
+Then user can see Your username should be between 2 and 15 characters, begin with a letter and contain only letters, numbers, '_' or '-'.
+
+Scenario: Empy username
+Given user is on last.fm registration website
+When user fills username box then clear it
+Then user can see Please enter a username
+
+Scenario: Wrong format email
+Given user is on last.fm registration website
+When user fills in the email box mail wrong format
+Then user can see That doesn't look like a real email address. Try again?
+
+Scenario: Empy email
+Given user is on last.fm registration website
+When user fills email box then clear it
+Then User can see Please enter your email address.
+
+Scenario: Existing email
+Given user is on last.fm registration website
+When user fills in the email box existing account email
+Then user can see Sorry, that email address is already registered to another account.
+
+Scenario: Empty Password
+Given user is on last.fm registration website
+When user fills in the password box then clear it
+Then user can see Please choose a password.
+
+Scenario: Empty Confirm Password
+Given user is on last.fm registration website
+When user fills in the confirm password box then clear it
+Then user can see Please type your password again.
+
+Scenario: Encrypted password
+Given user is on last.fm registration website
+When user fills in the password box
+Then user can see written password is encrypted with "*" symbols.
+
+Scenario: Too weak password
+Given user is on last.fm registration website
+When user fills in the password box but no following the rules
+Then user can see Your password is not strong enough. New passwords must:
+Be at least six characters long
+Contain one or more numbers
+Include at least one of the following special characters: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~, or a space
+
+Scenario: Confirm password different from password
+Given user is on last.fm registration website
+When user fills confirm password different from password
+Then user can see Please enter a valid password first.
+
+Scenario: cleared Confirm password field
+Given user is on last.fm registration website
+When user fills Confirm password with any value and then clears it
+Then user can see Please type your password again.
+
+Scenario: Submited form with Confirm password wrong and password following the rules
+Given user is on last.fm registration website
+When user fills registration form with wrong Confirm password and submits it
+Then user can see Passwords don't match
+
+Scenario: Submited form with confirm password and password empty
+Given user is on last.fm registration website
+When user fills registration form with wrong confirm password and submits it
+Then user can see Please choose a password. and 
+Please type your password again.
+
+Scenario: Submited form with password wrong
+Given user is on last.fm registration website
+When user fills registration form with wrong Confirm password and submits it
+Then user can see Your password is not strong enough. New passwords must:
+Be at least six characters long
+Contain one or more numbers
+Include at least one of the following special characters: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~, or a space
+
+Scenario: Submited form without @ in email
+Given user is on last.fm registration website
+When user fills email box without @ and submits form
+Then User can see Please include an '@' in the email adress. 'given string' is missing an '@'.
+
+Scenario: Tab clicked
+Given user is on last.fm registration website
+When press Tab 
+Then user can see writing cursor moves to next field.
+
+Scenario: Tab and enter clicked
+Given user is on last.fm registration website
+When press tab and enter with proper data
+Then user can see page reloading submitting the registration.
+
+Scenario: Not all fields filled
+Given user is on last.fm registration website
+When user doesn't fill all fields
+Then user can see page reloading with warning of wrong data.
+
+Scenario: Check registration form
+Given user is on last.fm registration website
+When page loaded
+Then user can see page with Username, Email, Password, Confirm Password, Captcha and agreement to the Terms Of Use and Privacy Policy fields.
+
+Scenario: Wrong captcha
+Given user is on last.fm registration website
+When user doesn't fill the captcha box and submits the form
+Then user can see You didn't complete the captcha properly. Try again?
+
+Scenario: Agreement not marked
+Given user is on last.fm registration website
+When user doesn't mark the agreement to the Terms Of Use and Privacy Policy box and submits form
+Then user can see You didn't complete the captcha properly. Try again?
+
+Scenario: Agreement not marked by default
+Given user is on last.fm registration website
+When user look on the website
+Then user can see unmarked agreement to the Terms Of Use and Privacy Policy box.
+
+Scenario: Proper Username
+Given user is on last.fm registration registration website
+When user fills the username following the rules
+Then user can see Ok, that username can be yours!
+
+Scenario: Proper Email
+Given user is on last.fm registration registration website
+When user fills the email following the rules
+Then sser can see Looking good!
+
+Scenario: Proper Password
+Given user is on last.fm registration registration website
+When user fills the password following the rules
+Then user can see Ok.
+
+Scenario: Proper Confirm Password
+Given user is on last.fm registration registration website
+When user fills in the password and Confirm password following the rules
+Then user can see Ok.
+
+Scenario: Proper all data
+Given user is on last.fm registration registration website
+When user fills all fields following the rules
+Then user click submit button.
+And user can see Welcome to last.fm, username! and recomended albums.
